@@ -1,0 +1,3 @@
+Vivado Simulator 2020.2
+Time resolution is 1 ps
+$stop called at time : 470 ns : File "C:/Users/LOVE/Desktop/axi_round_robin/axi_round_robin.srcs/sim_1/new/axis_round_tb.sv" Line 97

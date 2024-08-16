@@ -1,0 +1,9 @@
+0.7
+2020.2
+Nov 18 2020
+09:47:47
+C:/Users/LOVE/Desktop/axi_slave_master/axis_master_slave.sim/sim_1/behav/xsim/glbl.v,1605673889,verilog,,,,glbl,,uvm,,,,,,
+C:/Users/LOVE/Desktop/axi_slave_master/axis_master_slave.srcs/sim_1/new/top_tb.sv,1723211310,systemVerilog,,,,top_tb,,uvm,,,,,,
+C:/Users/LOVE/Desktop/axi_slave_master/axis_master_slave.srcs/sources_1/new/axis_m.sv,1723210912,systemVerilog,,C:/Users/LOVE/Desktop/axi_slave_master/axis_master_slave.srcs/sources_1/new/axis_s.sv,,axis_m,,uvm,,,,,,
+C:/Users/LOVE/Desktop/axi_slave_master/axis_master_slave.srcs/sources_1/new/axis_s.sv,1723210912,systemVerilog,,C:/Users/LOVE/Desktop/axi_slave_master/axis_master_slave.srcs/sources_1/new/top_module.sv,,axis_s,,uvm,,,,,,
+C:/Users/LOVE/Desktop/axi_slave_master/axis_master_slave.srcs/sources_1/new/top_module.sv,1723210912,systemVerilog,,C:/Users/LOVE/Desktop/axi_slave_master/axis_master_slave.srcs/sim_1/new/top_tb.sv,,top_module,,uvm,,,,,,
