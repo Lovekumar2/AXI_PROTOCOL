@@ -1,0 +1,3 @@
+Vivado Simulator 2020.2
+Time resolution is 1 ps
+$finish called at time : 900 ns : File "C:/Users/LOVE/Desktop/AXI_FIFO/AXI_FIFO.srcs/sim_1/new/axis_fifo_tb.sv" Line 72
