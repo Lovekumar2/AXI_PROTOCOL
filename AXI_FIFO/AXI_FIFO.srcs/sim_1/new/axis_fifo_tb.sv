@@ -19,7 +19,7 @@ module axis_fifo_tb;
  reg m_axis_tready;
 
  // Instantiate the DUT
- axi_fifo dut (
+ axis_fifo dut (
  .aclk(aclk),
  .aresetn(aresetn),
  .s_axis_tvalid(s_axis_tvalid),
