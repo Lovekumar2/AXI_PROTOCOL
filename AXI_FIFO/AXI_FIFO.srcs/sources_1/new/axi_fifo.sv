@@ -19,8 +19,7 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-
-module axi_fifo
+module axis_fifo
  ( 
  input wire aclk,
  input wire aresetn,
@@ -29,10 +28,10 @@ module axi_fifo
  input wire s_axis_tkeep,
  input wire s_axis_tlast,
  
- output wire m_axis_tvalid, // output to mux
- output wire [7:0] m_axis_tdata, // output to mux
- output wire m_axis_tkeep, // output to mux
- output wire m_axis_tlast, // output to mux
+ output reg m_axis_tvalid, // output to mux
+ output reg [7:0] m_axis_tdata, // output to mux
+ output reg m_axis_tkeep, // output to mux
+ output reg m_axis_tlast, // output to mux
  input wire m_axis_tready // input from mux
 );
 
@@ -55,6 +54,10 @@ always @(posedge aclk) begin
  wr_ptr <= 0;
  rd_ptr <= 0;
  count <= 0;
+ m_axis_tvalid <= 1'b0;
+ m_axis_tkeep <= 1'b0;
+ m_axis_tlast <= 1'b0;
+ m_axis_tdata <= 8'h00;
  
  //initialize memory
  for (int i = 0; i < 16; i++) begin
@@ -70,18 +73,20 @@ always @(posedge aclk) begin
  mem_l[wr_ptr] <= s_axis_tlast;
  wr_ptr <= wr_ptr + 1;
  count <= count + 1;
+ m_axis_tvalid <= 1'b0;
+ m_axis_tkeep <= 1'b0;
+ m_axis_tlast <= 1'b0;
+ m_axis_tdata <= 8'h00;
  end 
  // Read data from the FIFO if it's not empty and mux is ready
  else if (m_axis_tready == 1'b1 && empty == 1'b0) begin
+ m_axis_tdata <= mem_d[rd_ptr] ;
+ m_axis_tkeep <= mem_k[rd_ptr];
+ m_axis_tlast <= mem_l[rd_ptr];
+ m_axis_tvalid <= 1'b1;
  rd_ptr <= rd_ptr + 1;
  count <= count - 1;
  end
 end
-
-
-assign m_axis_tdata = (m_axis_tvalid == 1'b1) ? mem_d[rd_ptr] : 8'h0;
-assign m_axis_tkeep = (m_axis_tvalid == 1'b1) ? mem_k[rd_ptr] : 1'b0;
-assign m_axis_tlast = (m_axis_tvalid == 1'b1) ? mem_l[rd_ptr] : 1'b0;
-assign m_axis_tvalid = (count > 0) ? 1'b1 : 1'b0;
-
 endmodule
+
